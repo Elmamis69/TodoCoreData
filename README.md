@@ -27,17 +27,20 @@ Future updates will include iCloud sync and advanced filtering.
 Clone the repository:
 
 Open the project in Xcode and run it on a simulator or physical device (iOS 17 or later).
-Roadmap
-[x] Initialize repository with README and MIT License
-[x] Setup Xcode project (SwiftUI + Core Data)
-[] Implement Task entity and persistence logic
-[] Create task list and editor UI
-[] Add local notifications for due tasks
-[] Add filters and search
-[] Add iCloud sync (CloudKit)
-[] Polish UI and add dark mode support
-[] Add app icon and launch screen
-[] Prepare for App Store submission
+
+## Roadmap
+
+- [x] Initialize repository with README and MIT License  
+- [x] Setup Xcode project (SwiftUI + Core Data)  
+- [ ] Implement Task entity and persistence logic  
+- [ ] Create task list and editor UI  
+- [ ] Add local notifications for due tasks  
+- [ ] Add filters and search  
+- [ ] Add iCloud sync (CloudKit)  
+- [ ] Polish UI and add dark mode support  
+- [ ] Add app icon and launch screen  
+- [ ] Prepare for App Store submission  
+
 
 **Author**
 Adrián Félix

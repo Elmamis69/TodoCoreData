@@ -31,8 +31,8 @@ git clone https://github.com/<your-username>/todo-coredata.git
 
 Open the project in Xcode and run it on a simulator or physical device (iOS 17 or later).
 Roadmap
-[] Initialize repository with README and MIT License
-[] Setup Xcode project (SwiftUI + Core Data)
+[x] Initialize repository with README and MIT License
+[x] Setup Xcode project (SwiftUI + Core Data)
 [] Implement Task entity and persistence logic
 [] Create task list and editor UI
 [] Add local notifications for due tasks
@@ -50,5 +50,5 @@ Passionate about iOS development and clean architecture.
 GitHub: @Elmamis69
 Email: guerofelix234@gmail.com
 
-**License**
+License
 This project is licensed under the MIT License.

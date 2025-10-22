@@ -24,8 +24,6 @@ Future updates will include iCloud sync and advanced filtering.
 
 ## Getting Started
 
-Clone the repository:
-
 Open the project in Xcode and run it on a simulator or physical device (iOS 17 or later).
 
 ## Roadmap
@@ -52,6 +50,8 @@ Email: guerofelix234@gmail.com
 
 **License**
 This project is licensed under the MIT License.
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/<your-username>/todo-coredata.git

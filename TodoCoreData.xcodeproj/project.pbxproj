@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D84B6A92EA98EA6009DE611 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0D84B6A82EA98EA6009DE611 /* README.md */; };
+		0D84B6AB2EA9A503009DE611 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0D84B6AA2EA9A4FC009DE611 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +33,7 @@
 		0D84B67A2EA986D7009DE611 /* TodoCoreDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoCoreDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D84B6842EA986D7009DE611 /* TodoCoreDataUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoCoreDataUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D84B6A82EA98EA6009DE611 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0D84B6AA2EA9A4FC009DE611 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -80,6 +82,7 @@
 		0D84B65F2EA986D6009DE611 = {
 			isa = PBXGroup;
 			children = (
+				0D84B6AA2EA9A4FC009DE611 /* .gitignore */,
 				0D84B6A82EA98EA6009DE611 /* README.md */,
 				0D84B66A2EA986D6009DE611 /* TodoCoreData */,
 				0D84B67D2EA986D7009DE611 /* TodoCoreDataTests */,
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D84B6A92EA98EA6009DE611 /* README.md in Resources */,
+				0D84B6AB2EA9A503009DE611 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

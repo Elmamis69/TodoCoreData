@@ -33,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D78A0C02EA9CCBF0072AD05 /* NotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsService.swift; sourceTree = "<group>"; };
 		0D84B6682EA986D6009DE611 /* TodoCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D84B67A2EA986D7009DE611 /* TodoCoreDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoCoreDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D84B6842EA986D7009DE611 /* TodoCoreDataUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoCoreDataUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +144,7 @@
 		0D84B6AF2EA9A6DB009DE611 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0D78A0C02EA9CCBF0072AD05 /* NotificationsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";

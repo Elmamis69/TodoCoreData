@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D78A0C12EA9D10A0072AD05 /* NotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D78A0C02EA9CCBF0072AD05 /* NotificationsService.swift */; };
+		0D78A0C22EA9E2B60072AD05 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D84B6B22EA9A70B009DE611 /* TaskRowView.swift */; };
 		0D84B69E2EA98731009DE611 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D84B6992EA98731009DE611 /* Persistence.swift */; };
 		0D84B6A02EA98731009DE611 /* TodoCoreDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D84B69B2EA98731009DE611 /* TodoCoreDataApp.swift */; };
 		0D84B6A92EA98EA6009DE611 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0D84B6A82EA98EA6009DE611 /* README.md */; };
@@ -298,6 +299,7 @@
 			files = (
 				0D78A0C12EA9D10A0072AD05 /* NotificationsService.swift in Sources */,
 				0D84B69E2EA98731009DE611 /* Persistence.swift in Sources */,
+				0D78A0C22EA9E2B60072AD05 /* TaskRowView.swift in Sources */,
 				0D84B6B12EA9A702009DE611 /* TaskListView.swift in Sources */,
 				0D84B6B62EA9A729009DE611 /* TaskEditorView.swift in Sources */,
 				0D84B6A02EA98731009DE611 /* TodoCoreDataApp.swift in Sources */,

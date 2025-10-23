@@ -65,9 +65,7 @@ struct TaskEditorView: View {
 
         do {
             try context.save()
-            if let due = task.dueDate {
-                NotificationsService.shared.scheduleReminder(for: task.objectID, title: title, dueDate: due)
-            }
+            NotificationsService.shared.updateReminder(for: task) // decide según isCompleted/dueDate
             dismiss()
         } catch {
             print("Save error: \(error)")

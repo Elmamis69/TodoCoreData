@@ -54,49 +54,11 @@ struct TaskListView: View {
 
     private func delete(offsets: IndexSet) {
         withAnimation {
-            offsets.map { tasks[$0] }.forEach(context.delete)
+            let toDelete = offsets.map { tasks[$0] }
+            toDelete.forEach { NotificationsService.shared.updateReminder(for: $0) } // esto cancela
+            toDelete.forEach(context.delete)
             try? context.save()
         }
     }
-}
 
-struct TaskRowView: View {
-    @ObservedObject var task: Task
-    var onTap: () -> Void
-
-    var body: some View {
-        HStack(spacing: 12) {
-            Button(action: toggleCompleted) {
-                Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
-                    .imageScale(.large)
-            }
-            .buttonStyle(.plain)
-
-            VStack(alignment: .leading, spacing: 4) {
-                Text(task.title ?? "")
-                    .font(.headline)
-                    .strikethrough(task.isCompleted)
-                if let due = task.dueDate {
-                    Text(due, style: .date)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-                if let notes = task.notes, !notes.isEmpty {
-                    Text(notes)
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(2)
-                }
-            }
-            Spacer()
-        }
-        .contentShape(Rectangle())
-        .onTapGesture { onTap() }
-    }
-
-    private func toggleCompleted() {
-        task.isCompleted.toggle()
-        task.updatedAt = Date()
-        try? task.managedObjectContext?.save()
-    }
 }

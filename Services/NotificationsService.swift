@@ -1,6 +1,6 @@
 import Foundation
 import UserNotifications
-import CoreData
+internal import CoreData
 
 final class NotificationsService: NSObject, UNUserNotificationCenterDelegate {
     static let shared = NotificationsService()

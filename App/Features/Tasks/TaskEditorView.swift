@@ -1,5 +1,5 @@
 import SwiftUI
-import CoreData
+internal import CoreData
 
 struct TaskEditorView: View {
     @Environment(\.dismiss) private var dismiss
@@ -50,7 +50,7 @@ struct TaskEditorView: View {
 
     private func load() {
         guard let t = taskToEdit else { return }
-        title = t.title
+        title = t.title ?? ""
         notes = t.notes ?? ""
         if let due = t.dueDate { hasDueDate = true; dueDate = due }
     }
@@ -66,7 +66,7 @@ struct TaskEditorView: View {
         do {
             try context.save()
             if let due = task.dueDate {
-                NotificationsService.shared.scheduleReminder(for: task.objectID, title: task.title, dueDate: due)
+                NotificationsService.shared.scheduleReminder(for: task.objectID, title: title, dueDate: due)
             }
             dismiss()
         } catch {

@@ -1,5 +1,5 @@
 import SwiftUI
-import CoreData
+internal import CoreData
 
 struct TaskListView: View {
     @Environment(\.managedObjectContext) private var context
@@ -73,7 +73,7 @@ struct TaskRowView: View {
             .buttonStyle(.plain)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(task.title)
+                Text(task.title ?? "")
                     .font(.headline)
                     .strikethrough(task.isCompleted)
                 if let due = task.dueDate {

@@ -1,4 +1,5 @@
 import SwiftUI
+internal import CoreData
 
 @main
 struct TodoCoreDataApp: App {

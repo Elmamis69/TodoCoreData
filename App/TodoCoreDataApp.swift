@@ -1,20 +1,16 @@
-//
-//  TodoCoreDataApp.swift
-//  TodoCoreData
-//
-//  Created by Adrian Felix on 22/10/25.
-//
-
 import SwiftUI
-import CoreData
 
 @main
 struct TodoCoreDataApp: App {
     let persistenceController = PersistenceController.shared
 
+    init() {
+        NotificationsService.shared.configure()
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TaskListView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

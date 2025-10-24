@@ -4,50 +4,48 @@ internal import CoreData
 struct TaskListView: View {
     @Environment(\.managedObjectContext) private var context
 
-    @FetchRequest(
-        sortDescriptors: [
+    private let scope: TaskScope
+    private let query: String
+    private let onEdit: (Task) -> Void
+
+    @FetchRequest private var tasks: FetchedResults<Task>
+
+    init(scope: TaskScope, query: String, onEdit: @escaping (Task) -> Void) {
+        self.scope = scope
+        self.query = query
+        self.onEdit = onEdit
+
+        let sorts = [
             NSSortDescriptor(keyPath: \Task.isCompleted, ascending: true),
             NSSortDescriptor(keyPath: \Task.dueDate, ascending: true),
             NSSortDescriptor(keyPath: \Task.createdAt, ascending: true)
-        ],
-        animation: .default
-    ) private var tasks: FetchedResults<Task>
+        ]
+        let predicate = TaskListView.makePredicate(scope: scope, query: query)
 
-    @State private var showingEditor = false
-    @State private var editingTask: Task? = nil
+        _tasks = FetchRequest(entity: Task.entity(),
+                              sortDescriptors: sorts,
+                              predicate: predicate,
+                              animation: .default)
+    }
 
     var body: some View {
-        NavigationStack {
-            Group {
-                if tasks.isEmpty {
-                    ContentUnavailableView("No tasks yet",
-                                           systemImage: "checklist",
-                                           description: Text("Tap + to add your first task."))
-                } else {
-                    List {
-                        ForEach(tasks) { task in
-                            TaskRowView(task: task) {
-                                editingTask = task
-                                showingEditor = true
-                            }
+        Group {
+            if tasks.isEmpty {
+                ContentUnavailableView(
+                    "No tasks \(scope == .all ? "" : "for \(scope.rawValue.lowercased())")",
+                    systemImage: "checklist",
+                    description: Text(query.isEmpty ? "Tap + to add your first task." : "Try a different search.")
+                )
+            } else {
+                List {
+                    ForEach(tasks) { task in
+                        TaskRowView(task: task) {
+                            onEdit(task)
                         }
-                        .onDelete(perform: delete)
                     }
-                    .listStyle(.insetGrouped)
+                    .onDelete(perform: delete)
                 }
-            }
-            .navigationTitle("Tasks")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        editingTask = nil
-                        showingEditor = true
-                    } label: { Image(systemName: "plus") }
-                }
-            }
-            .sheet(isPresented: $showingEditor) {
-                TaskEditorView(taskToEdit: editingTask)
-                    .environment(\.managedObjectContext, context)
+                .listStyle(.insetGrouped)
             }
         }
     }
@@ -55,10 +53,33 @@ struct TaskListView: View {
     private func delete(offsets: IndexSet) {
         withAnimation {
             let toDelete = offsets.map { tasks[$0] }
-            toDelete.forEach { NotificationsService.shared.updateReminder(for: $0) } // esto cancela
+            toDelete.forEach { NotificationsService.shared.updateReminder(for: $0) }
             toDelete.forEach(context.delete)
             try? context.save()
         }
     }
+}
 
+extension TaskListView {
+    static func makePredicate(scope: TaskScope, query: String) -> NSPredicate? {
+        var subs: [NSPredicate] = []
+
+        switch scope {
+        case .all:
+            break
+        case .pending:
+            subs.append(NSPredicate(format: "isCompleted == NO"))
+        case .overdue:
+            subs.append(NSPredicate(format: "isCompleted == NO"))
+            subs.append(NSPredicate(format: "dueDate < %@", NSDate()))
+        }
+
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !trimmed.isEmpty {
+            subs.append(NSPredicate(format: "(title CONTAINS[cd] %@) OR (notes CONTAINS[cd] %@)", trimmed, trimmed))
+        }
+
+        if subs.isEmpty { return nil }
+        return NSCompoundPredicate(andPredicateWithSubpredicates: subs)
+    }
 }

@@ -11,7 +11,7 @@ struct TodoCoreDataApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TaskListView()
+            TaskHomeView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

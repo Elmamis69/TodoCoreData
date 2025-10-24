@@ -15,6 +15,8 @@
 		0D84B6AB2EA9A503009DE611 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0D84B6AA2EA9A4FC009DE611 /* .gitignore */; };
 		0D84B6B12EA9A702009DE611 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D84B6B02EA9A6FF009DE611 /* TaskListView.swift */; };
 		0D84B6B62EA9A729009DE611 /* TaskEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D84B6B52EA9A725009DE611 /* TaskEditorView.swift */; };
+		0DE22CC92EAB04440073F2B2 /* TaskFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE22CC82EAB04410073F2B2 /* TaskFilters.swift */; };
+		0DE22CCB2EAB047B0073F2B2 /* TaskHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE22CCA2EAB04770073F2B2 /* TaskHomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		0D84B6B02EA9A6FF009DE611 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		0D84B6B22EA9A70B009DE611 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
 		0D84B6B52EA9A725009DE611 /* TaskEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorView.swift; sourceTree = "<group>"; };
+		0DE22CC82EAB04410073F2B2 /* TaskFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilters.swift; sourceTree = "<group>"; };
+		0DE22CCA2EAB04770073F2B2 /* TaskHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -136,6 +140,8 @@
 		0D84B6AE2EA9A6D2009DE611 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				0DE22CCA2EAB04770073F2B2 /* TaskHomeView.swift */,
+				0DE22CC82EAB04410073F2B2 /* TaskFilters.swift */,
 				0D84B6B52EA9A725009DE611 /* TaskEditorView.swift */,
 				0D84B6B22EA9A70B009DE611 /* TaskRowView.swift */,
 				0D84B6B02EA9A6FF009DE611 /* TaskListView.swift */,
@@ -297,7 +303,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DE22CC92EAB04440073F2B2 /* TaskFilters.swift in Sources */,
 				0D78A0C12EA9D10A0072AD05 /* NotificationsService.swift in Sources */,
+				0DE22CCB2EAB047B0073F2B2 /* TaskHomeView.swift in Sources */,
 				0D84B69E2EA98731009DE611 /* Persistence.swift in Sources */,
 				0D78A0C22EA9E2B60072AD05 /* TaskRowView.swift in Sources */,
 				0D84B6B12EA9A702009DE611 /* TaskListView.swift in Sources */,

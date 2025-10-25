@@ -52,9 +52,22 @@
 		0DE22CCA2EAB04770073F2B2 /* TaskHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0DE22CCD2EAB5F2C0073F2B2 /* Exceptions for "TodoCoreData" folder in "TodoCoreData" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0D84B6672EA986D6009DE611 /* TodoCoreData */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0D84B66A2EA986D6009DE611 /* TodoCoreData */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0DE22CCD2EAB5F2C0073F2B2 /* Exceptions for "TodoCoreData" folder in "TodoCoreData" target */,
+			);
 			path = TodoCoreData;
 			sourceTree = "<group>";
 		};
@@ -475,6 +488,7 @@
 				DEVELOPMENT_TEAM = B258X67868;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TodoCoreData/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -507,6 +521,7 @@
 				DEVELOPMENT_TEAM = B258X67868;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TodoCoreData/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

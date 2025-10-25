@@ -36,19 +36,24 @@ struct TaskListView: View {
                     systemImage: "checklist",
                     description: Text(query.isEmpty ? "Tap + to add your first task." : "Try a different search.")
                 )
+                .padding(.top, 80)
             } else {
-                List {
-                    ForEach(tasks) { task in
-                        TaskRowView(task: task) {
-                            onEdit(task)
+                ScrollView {
+                    VStack(spacing: 16) {
+                        ForEach(tasks) { task in
+                            TaskRowView(task: task) {
+                                onEdit(task)
+                            }
                         }
                     }
-                    .onDelete(perform: delete)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 12)
+                    .padding(.bottom, 32)
                 }
-                .listStyle(.insetGrouped)
             }
         }
     }
+
 
     private func delete(offsets: IndexSet) {
         withAnimation {

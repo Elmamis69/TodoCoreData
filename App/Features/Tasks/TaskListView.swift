@@ -6,14 +6,14 @@ struct TaskListView: View {
 
     private let scope: TaskScope
     private let query: String
-    private let onEdit: (Task) -> Void
+    private let openEditor: (Task?) -> Void // nil = crear nueva
 
     @FetchRequest private var tasks: FetchedResults<Task>
 
-    init(scope: TaskScope, query: String, onEdit: @escaping (Task) -> Void) {
+    init(scope: TaskScope, query: String, openEditor: @escaping (Task?) -> Void) {
         self.scope = scope
         self.query = query
-        self.onEdit = onEdit
+        self.openEditor = openEditor
 
         let sorts = [
             NSSortDescriptor(keyPath: \Task.isCompleted, ascending: true),
@@ -22,10 +22,12 @@ struct TaskListView: View {
         ]
         let predicate = TaskListView.makePredicate(scope: scope, query: query)
 
-        _tasks = FetchRequest(entity: Task.entity(),
-                              sortDescriptors: sorts,
-                              predicate: predicate,
-                              animation: .default)
+        _tasks = FetchRequest(
+            entity: Task.entity(),
+            sortDescriptors: sorts,
+            predicate: predicate,
+            animation: .default
+        )
     }
 
     var body: some View {
@@ -41,9 +43,9 @@ struct TaskListView: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         ForEach(tasks) { task in
-                            TaskRowView(task: task) {
-                                onEdit(task)
-                            }
+                            TaskRowView(task: task,
+                                        onEdit: { openEditor(task) },
+                                        onDelete: { deleteSingle(task) })
                         }
                     }
                     .padding(.horizontal, 16)
@@ -54,17 +56,14 @@ struct TaskListView: View {
         }
     }
 
-
-    private func delete(offsets: IndexSet) {
-        withAnimation {
-            let toDelete = offsets.map { tasks[$0] }
-            toDelete.forEach { NotificationsService.shared.updateReminder(for: $0) }
-            toDelete.forEach(context.delete)
-            try? context.save()
-        }
+    private func deleteSingle(_ task: Task) {
+        NotificationsService.shared.updateReminder(for: task) // cancela notifs
+        context.delete(task)
+        try? context.save()
     }
 }
 
+// MARK: - Predicates
 extension TaskListView {
     static func makePredicate(scope: TaskScope, query: String) -> NSPredicate? {
         var subs: [NSPredicate] = []
@@ -81,7 +80,9 @@ extension TaskListView {
 
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
         if !trimmed.isEmpty {
-            subs.append(NSPredicate(format: "(title CONTAINS[cd] %@) OR (notes CONTAINS[cd] %@)", trimmed, trimmed))
+            subs.append(
+                NSPredicate(format: "(title CONTAINS[cd] %@) OR (notes CONTAINS[cd] %@)", trimmed, trimmed)
+            )
         }
 
         if subs.isEmpty { return nil }

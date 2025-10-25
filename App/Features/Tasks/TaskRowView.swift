@@ -2,16 +2,18 @@ import SwiftUI
 internal import CoreData
 
 struct TaskRowView: View {
+    @Environment(\.managedObjectContext) private var context
+
     @ObservedObject var task: Task
-    var onTap: () -> Void
+    var onEdit: () -> Void
+    var onDelete: () -> Void
 
     private var dueText: String? {
         guard let due = task.dueDate else { return nil }
-        // Ej: "Due: Today, 5:30 PM" o "Due: 23 Oct 2025"
         let formatter = DateFormatter()
         formatter.locale = .current
-
         let cal = Calendar.current
+
         if cal.isDateInToday(due) {
             formatter.dateFormat = "'Today,' h:mm a"
         } else if cal.isDateInTomorrow(due) {
@@ -58,9 +60,9 @@ struct TaskRowView: View {
 
                 Spacer()
 
-                // Botón editar (abre sheet)
+                // Edit button
                 Button {
-                    onTap()
+                    onEdit()
                 } label: {
                     Image(systemName: "pencil")
                         .font(.system(size: 16, weight: .medium))
@@ -74,10 +76,22 @@ struct TaskRowView: View {
                 .buttonStyle(.plain)
             }
 
-            // Línea gris clarita si no está completada
-            if !task.isCompleted {
-                Divider()
-                    .overlay(Color.secondary.opacity(0.2))
+            HStack {
+                Spacer()
+                Button {
+                    onDelete()
+                } label: {
+                    Image(systemName: "trash")
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundStyle(.red)
+                        .padding(.vertical, 6)
+                        .padding(.horizontal, 10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color.red.opacity(0.08))
+                        )
+                }
+                .buttonStyle(.plain)
             }
         }
         .padding(.vertical, 12)
@@ -86,8 +100,6 @@ struct TaskRowView: View {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(Color(.secondarySystemBackground))
         )
-        .contentShape(Rectangle())
-        .onTapGesture { onTap() }
     }
 
     private func toggleCompleted() {
@@ -97,11 +109,11 @@ struct TaskRowView: View {
         task.isCompleted = newValue
         task.updatedAt = Date()
 
-        // si se completa, limpiamos dueDate para que ya no reprograme
+        // si se completa, quita dueDate para que ya no reprograme sola
         if newValue { task.dueDate = nil }
 
         do {
-            try task.managedObjectContext?.save()
+            try context.save()
             print("✅ saved toggle. isCompleted=\(task.isCompleted)")
         } catch {
             print("❌ save error on toggle:", error.localizedDescription)

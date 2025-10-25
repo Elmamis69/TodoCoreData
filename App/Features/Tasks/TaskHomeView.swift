@@ -5,40 +5,68 @@ struct TaskHomeView: View {
     @State private var scope: TaskScope = .all
     @State private var query: String = ""
 
-    // editor
     @State private var showingEditor = false
     @State private var editingTask: Task? = nil
 
     var body: some View {
         NavigationStack {
-            TaskListView(scope: scope, query: query) { task in
-                // abrir editor para editar
-                editingTask = task
-                showingEditor = true
+            VStack(alignment: .leading, spacing: 16) {
+
+                // Segmented picker
+                Picker("", selection: $scope) {
+                    ForEach(TaskScope.allCases) { s in
+                        Text(s.rawValue).tag(s)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                // Search field (visual pill). The actual search binding still comes from .searchable
+                HStack(spacing: 8) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(.secondary)
+                    TextField("Search tasks", text: $query)
+                        .textInputAutocapitalization(.sentences)
+                        .disableAutocorrection(false)
+                }
+                .padding(.vertical, 10)
+                .padding(.horizontal, 12)
+                .background(
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .fill(Color(.secondarySystemBackground))
+                )
+
+                // The list / scroll of tasks
+                TaskListView(scope: scope,
+                             query: query,
+                             openEditor: { task in
+                    editingTask = task // task ó nil
+                    showingEditor = true
+                })
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .automatic),
-                        prompt: "Search tasks")
+            .padding(.horizontal, 16)
+            .padding(.top, 16)
             .navigationTitle("Tasks")
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Picker("", selection: $scope) {
-                        ForEach(TaskScope.allCases) { s in
-                            Text(s.rawValue).tag(s)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .frame(maxWidth: 320)
-                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        editingTask = nil
+                        editingTask = nil // crear nueva
                         showingEditor = true
-                    } label: { Image(systemName: "plus") }
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 18, weight: .semibold))
+                            .padding(10)
+                            .background(
+                                Circle()
+                                    .fill(Color(.secondarySystemBackground))
+                            )
+                    }
                 }
             }
             .sheet(isPresented: $showingEditor) {
                 TaskEditorView(taskToEdit: editingTask)
-                    .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+                    .environment(\.managedObjectContext,
+                                  PersistenceController.shared.container.viewContext)
             }
         }
     }

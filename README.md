@@ -30,19 +30,21 @@ Open the project in Xcode and run it on a simulator or physical device (iOS 17 o
 
 - [x] Initialize repository with README and MIT License  
 - [x] Setup Xcode project (SwiftUI + Core Data)  
-- [ ] Implement Task entity and persistence logic  
-- [ ] Create task list and editor UI  
-- [ ] Add local notifications for due tasks  
-- [ ] Add filters and search  
+- [x] Implement Task entity and persistence logic  
+- [x] Create task list and editor UI  
+- [x] Add local notifications for due tasks  
+- [x] Add filters and search  
 - [ ] Add iCloud sync (CloudKit)  
-- [ ] Polish UI and add dark mode support  
-- [ ] Add app icon and launch screen  
+- [x] Polish UI and add dark mode support  
+- [x] Add app icon and launch screen  
 - [ ] Prepare for App Store submission  
 
 
 **Author**
 Adrián Félix
+
 Software Engineering
+
 Passionate about iOS development and clean architecture.
 
 GitHub: @Elmamis69

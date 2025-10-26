@@ -50,7 +50,7 @@ struct SettingsView: View {
 
                 // Support / legal
                 Section("Support") {
-                    Link(destination: URL(string: "https://tasko.app/privacy")!) {
+                    Link(destination: URL(string: "https://github.com/Elmamis69/TodoCoreData/blob/main/PRIVACY.md")!) {
                         Label("Privacy Policy", systemImage: "lock.shield")
                     }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D2214B02EADC4F500629DB0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2214AF2EADC4F200629DB0 /* SettingsView.swift */; };
 		0D35C1A42EAC872B00DE2F93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D35C1A32EAC872B00DE2F93 /* LaunchScreen.storyboard */; };
 		0D78A0C12EA9D10A0072AD05 /* NotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D78A0C02EA9CCBF0072AD05 /* NotificationsService.swift */; };
 		0D78A0C22EA9E2B60072AD05 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D84B6B22EA9A70B009DE611 /* TaskRowView.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D2214AF2EADC4F200629DB0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0D35C1A32EAC872B00DE2F93 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D78A0C02EA9CCBF0072AD05 /* NotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsService.swift; sourceTree = "<group>"; };
 		0D84B6682EA986D6009DE611 /* TodoCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D2214AE2EADC4EA00629DB0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0D2214AF2EADC4F200629DB0 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		0D84B65F2EA986D6009DE611 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +158,7 @@
 		0D84B6AD2EA9A680009DE611 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				0D2214AE2EADC4EA00629DB0 /* Settings */,
 				0D84B6AE2EA9A6D2009DE611 /* Tasks */,
 			);
 			path = Features;
@@ -325,6 +336,7 @@
 				0DE22CCB2EAB047B0073F2B2 /* TaskHomeView.swift in Sources */,
 				0D84B69E2EA98731009DE611 /* Persistence.swift in Sources */,
 				0D78A0C22EA9E2B60072AD05 /* TaskRowView.swift in Sources */,
+				0D2214B02EADC4F500629DB0 /* SettingsView.swift in Sources */,
 				0D84B6B12EA9A702009DE611 /* TaskListView.swift in Sources */,
 				0D84B6B62EA9A729009DE611 /* TaskEditorView.swift in Sources */,
 				0D84B6A02EA98731009DE611 /* TodoCoreDataApp.swift in Sources */,

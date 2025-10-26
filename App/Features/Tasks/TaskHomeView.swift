@@ -7,6 +7,7 @@ struct TaskHomeView: View {
 
     @State private var showingEditor = false
     @State private var editingTask: Task? = nil
+    @State private var showingSettings = false
 
     var body: some View {
         NavigationStack {
@@ -50,8 +51,23 @@ struct TaskHomeView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
+                        showingSettings = true
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                            .font(.system(size: 18, weight: .semibold))
+                            .padding(10)
+                            .background(
+                                Circle()
+                                    .fill(Color(.secondarySystemBackground))
+                            )
+                    }
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
                         editingTask = nil // crear nueva
                         showingEditor = true
+                        
                     } label: {
                         Image(systemName: "plus")
                             .font(.system(size: 18, weight: .semibold))
@@ -63,6 +79,10 @@ struct TaskHomeView: View {
                     }
                 }
             }
+            .sheet(isPresented: $showingSettings) {
+                SettingsView()
+            }
+
             .sheet(isPresented: $showingEditor) {
                 TaskEditorView(taskToEdit: editingTask)
                     .environment(\.managedObjectContext,

@@ -37,7 +37,7 @@ Open the project in Xcode and run it on a simulator or physical device (iOS 17 o
 - [ ] Add iCloud sync (CloudKit)  
 - [x] Polish UI and add dark mode support  
 - [x] Add app icon and launch screen  
-- [ ] Prepare for App Store submission  
+- [x] Prepare for App Store submission  
 
 
 **Author**

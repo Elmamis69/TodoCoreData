@@ -36,7 +36,7 @@ Open the project in Xcode and run it on a simulator or physical device (iOS 17 o
 - [x] Add filters and search  
 - [ ] Add iCloud sync (CloudKit)  
 - [x] Polish UI and add dark mode support  
-- [ ] Add app icon and launch screen  
+- [x] Add app icon and launch screen  
 - [ ] Prepare for App Store submission  
 
 

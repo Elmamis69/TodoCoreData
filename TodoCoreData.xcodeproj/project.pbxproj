@@ -40,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		0D2214AF2EADC4F200629DB0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0D2214B12EADD4E400629DB0 /* PRIVACY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.md; sourceTree = "<group>"; };
 		0D35C1A32EAC872B00DE2F93 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D78A0C02EA9CCBF0072AD05 /* NotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsService.swift; sourceTree = "<group>"; };
 		0D84B6682EA986D6009DE611 /* TodoCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +124,7 @@
 		0D84B65F2EA986D6009DE611 = {
 			isa = PBXGroup;
 			children = (
+				0D2214B12EADD4E400629DB0 /* PRIVACY.md */,
 				0D35C1A32EAC872B00DE2F93 /* LaunchScreen.storyboard */,
 				0D84B6AF2EA9A6DB009DE611 /* Services */,
 				0D84B6AC2EA9A631009DE611 /* App */,
